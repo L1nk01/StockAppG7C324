@@ -1,0 +1,36 @@
+﻿@model List<Application.ViewModels.ProductViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2>No hay productos</h2>
+        } 
+        else
+        {
+            @foreach (Application.ViewModels.ProductViewModel item in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="@item.ImagePath" alt="@item.Name" />
+
+                        <div class="card-body">
+                            <h4>@item.Name</h4>
+                            <p class="card-text">@item.Description</p>
+                            <div class"">
+                                <h5 class="fw-bold float-end">@item.Price.ToString("C")</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+</div>

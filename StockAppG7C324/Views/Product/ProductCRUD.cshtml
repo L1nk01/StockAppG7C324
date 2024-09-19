@@ -1,0 +1,44 @@
+﻿@model List<Application.ViewModels.ProductViewModel>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container-fluid">
+
+    <div class="d-grid mb-3">
+        <a asp-controller="Product" asp-action="CreateProduct" class="btn btn-primary">Agregar producto</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2>No hay productos</h2>
+        }
+        else
+        {
+            @foreach (Application.ViewModels.ProductViewModel item in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="product-image" src="@item.ImagePath" alt="@item.Name" />
+
+                        <div class="card-body">
+                            <h4>@item.Name</h4>
+                            <p class="card-text">@item.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a asp-controller="Product" asp-action="UpdateProduct" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-warning">Editar</a>
+                                    <a asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                </div>
+                                <h5 class="fw-bold">@item.Price.ToString("C")</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+</div>
