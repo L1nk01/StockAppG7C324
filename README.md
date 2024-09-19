@@ -1,0 +1,1 @@
+- Cuando se vaya a utilizar el proyecto se deben realizar las migraciones a la base de datos e insertar 3 registros en la tabla Categories
