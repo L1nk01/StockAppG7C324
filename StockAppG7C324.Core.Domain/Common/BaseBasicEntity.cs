@@ -1,4 +1,4 @@
-﻿namespace Database.Common
+﻿namespace StockAppG7C324.Core.Domain.Common
 {
     public class BaseBasicEntity
     {

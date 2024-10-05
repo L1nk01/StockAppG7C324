@@ -1,6 +1,6 @@
-﻿using Database.Common;
+﻿using StockAppG7C324.Core.Domain.Common;
 
-namespace Database.Entities
+namespace StockAppG7C324.Core.Domain.Entities
 {
     public class Product : BaseBasicEntity
     {

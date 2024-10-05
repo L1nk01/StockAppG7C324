@@ -1,22 +1,22 @@
-﻿using Application.Repository;
-using Application.ViewModels;
-using Database.Contexts;
-using Database.Entities;
+﻿using StockAppG7C324.Core.Application.Interfaces.Repositories;
+using StockAppG7C324.Core.Application.Interfaces.Services;
+using StockAppG7C324.Core.Application.ViewModels.Product;
+using StockAppG7C324.Core.Domain.Entities;
 
-namespace Application.Services
+namespace StockAppG7C324.Core.Application.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private readonly ProductRepository _productRepository;
+        private readonly IProductRepository _repository;
 
-        public ProductService(ApplicationContext dbContext)
+        public ProductService(IProductRepository repository)
         {
-            _productRepository = new(dbContext);
+            _repository = repository;
         }
 
         public async Task<List<ProductViewModel>> GetAllProductViewModels()
         {
-            var productList = await _productRepository.GetProductsAsync();
+            var productList = await _repository.GetProductsAsync();
 
             return productList.Select(product => new ProductViewModel
             {
@@ -38,12 +38,12 @@ namespace Application.Services
             product.Description = spvm.Description;
             product.CategoryId = spvm.CategoryId;
 
-            await _productRepository.AddProductAsync(product);
+            await _repository.AddProductAsync(product);
         }
 
         public async Task<SaveProductCRUDViewModel> GetByIdSaveProductCRUDViewModel(int id)
         {
-            var product = await _productRepository.GetProductByIdAsync(id);
+            var product = await _repository.GetProductByIdAsync(id);
 
             SaveProductCRUDViewModel spvm = new();
 
@@ -68,7 +68,7 @@ namespace Application.Services
             product.Description = spvm.Description;
             product.CategoryId = spvm.CategoryId;
 
-            await _productRepository.UpdateProductAsync(product);
+            await _repository.UpdateProductAsync(product);
         }
 
         public async Task DeleteProduct(SaveProductCRUDViewModel spvm)
@@ -77,7 +77,7 @@ namespace Application.Services
 
             product.Id = spvm.Id;
 
-            await _productRepository.DeleteProductAsync(product);
+            await _repository.DeleteProductAsync(product);
         }
     }
 }

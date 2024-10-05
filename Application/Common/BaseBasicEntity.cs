@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.Common
+namespace StockAppG7C324.Core.Application.Common
 {
     public class BaseBasicEntity
     {

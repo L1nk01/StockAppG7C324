@@ -1,7 +1,7 @@
-﻿using Application.Common;
+﻿using StockAppG7C324.Core.Application.Common;
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.ViewModels
+namespace StockAppG7C324.Core.Application.ViewModels.Product
 {
     public class ProductViewModel : BaseBasicEntity
     {

@@ -1,13 +1,11 @@
-using Database.Contexts;
-using Microsoft.EntityFrameworkCore;
+using StockAppG7C324.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationContext>(opt => opt.UseSqlServer(connectionString));
+builder.Services.AddPersistenceLayer(builder.Configuration);
+builder.Services.AddApplicationLayer();
 
 var app = builder.Build();
 

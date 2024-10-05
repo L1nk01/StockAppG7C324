@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.ViewModels
+namespace StockAppG7C324.Core.Application.ViewModels.Product
 {
     public class SaveProductCRUDViewModel : ProductViewModel
     {

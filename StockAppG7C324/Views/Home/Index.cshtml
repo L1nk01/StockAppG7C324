@@ -1,4 +1,5 @@
-﻿@model List<Application.ViewModels.ProductViewModel>
+﻿@using StockAppG7C324.Core.Application.ViewModels.Product
+@model List<StockAppG7C324.Core.Application.ViewModels.Product.ProductViewModel>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -14,11 +15,11 @@
         } 
         else
         {
-            @foreach (Application.ViewModels.ProductViewModel item in Model)
+            @foreach (ProductViewModel item in Model)
             {
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="@item.ImagePath" alt="@item.Name" />
+                        <img class="product-image" src="@item.ImagePath" alt="@item.Name" />
 
                         <div class="card-body">
                             <h4>@item.Name</h4>

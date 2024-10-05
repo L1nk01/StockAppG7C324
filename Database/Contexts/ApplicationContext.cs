@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Database.Entities;
+using StockAppG7C324.Core.Domain.Entities;
 
-namespace Database.Contexts
+namespace StockAppG7C324.Infrastructure.Persistence.Contexts
 {
     public class ApplicationContext : DbContext
     {

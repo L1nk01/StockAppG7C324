@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Database.Contexts;
-using Database.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using StockAppG7C324.Core.Application.Interfaces.Repositories;
+using StockAppG7C324.Core.Domain.Entities;
+using StockAppG7C324.Infrastructure.Persistence.Contexts;
 
-namespace Application.Repository
+namespace StockAppG7C324.Infrastructure.Persistence.Repositories
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly ApplicationContext _dbContext;
 
-        public ProductRepository(ApplicationContext dbContext) 
+        public ProductRepository(ApplicationContext dbContext)
         {
             _dbContext = dbContext;
         }

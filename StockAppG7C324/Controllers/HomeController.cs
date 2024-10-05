@@ -1,6 +1,5 @@
-using Application.Services;
-using Database.Contexts;
 using Microsoft.AspNetCore.Mvc;
+using StockAppG7C324.Core.Application.Interfaces.Services;
 using StockAppG7C324.Models;
 using System.Diagnostics;
 
@@ -8,16 +7,15 @@ namespace StockAppG7C324.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
-        public HomeController(ApplicationContext dbContext)
+        public HomeController(IProductService productService)
         {
-            _productService = new(dbContext);
+            _productService = productService;
         }
 
         public async Task<IActionResult> Index()
         {
-
             return View(await _productService.GetAllProductViewModels());
         }
 
